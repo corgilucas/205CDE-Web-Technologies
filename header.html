@@ -1,0 +1,144 @@
+<html>
+<head>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+$( function() {
+    $("#dt1").datepicker({
+        dateFormat: "dd-mm-yy",
+        minDate: 0,
+        onSelect: function (date) {
+            var date2 = $('#dt1').datepicker('getDate');
+            date2.setDate(date2.getDate() + 1);
+            $('#dt2').datepicker('setDate', date2);
+            //sets minDate to dt1 date + 1
+            $('#dt2').datepicker('option', 'minDate', date2);
+        }
+    });
+    $('#dt2').datepicker({
+        dateFormat: "dd-mm-yy",
+		minDate: 0,
+        onClose: function () {
+            var dt1 = $('#dt1').datepicker('getDate');
+            var dt2 = $('#dt2').datepicker('getDate');
+            //check to prevent a user from entering a date below date of dt1
+            if (dt2 <= dt1) {
+                var minDate = $('#dt2').datepicker('option', 'minDate');
+                $('#dt2').datepicker('setDate', minDate);
+            }
+        }
+    });
+  } );
+</script>
+<style type="text/css">
+body {
+	width: 100%;
+	margin: auto;
+}
+
+#content {
+	width: 1000px;
+	margin: 0 auto;
+}
+
+#container {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+#header {
+	width: 100%;
+	top: 0;
+	position: relative;
+	overflow: hidden;
+	background: #213875;
+}
+
+#footer {
+	background: #28499B;
+	height: 50px;
+	width: 100%;
+	position: relative;
+	bottom: 0;
+	overflow: hidden;
+	font-family: "Arial";
+	font-size: 15px;
+}
+
+#logo {
+	float: left;
+	font-size: 18px;
+	font-family: "Candara";
+	color: #B6D3F4;
+}
+
+#Hnav li {
+	list-style: none;
+	float: left;	
+}
+
+#Hnav li a {
+	color: white;
+	text-decoration: none;
+	margin-left: 50px;
+}
+
+#Fnav li {
+	list-style: none;
+	float: left;	
+}
+
+#Fnav li a {
+	color: white;
+	text-decoration: none;
+	margin-left: 20px;
+}
+
+#cpr {
+	float: left;
+	color: white;
+}
+
+#Hnav {
+	padding: 10px;
+	float: right;
+	font-size: 20px;
+	font-family: "Century Gothic";
+}
+
+#Fnav {
+	float: right;
+}
+
+#warning {
+	float:left;
+	color:red;
+	padding-left:30px;
+	font-size:20px;
+	font-family: "Arial";
+	margin:auto;
+	background:#585858;
+	width:300px;
+	border-radius:10px;
+	border-color: red;
+}
+</style>
+</head>
+<body>
+<div id="header">
+	<div id="container">
+		<div id="logo">
+			<h1>BestRent</h1>
+		</div>
+		
+		<div id="Hnav">
+			<ul>
+				<li><a href="index.php">Home</a></li>
+				<li><a href="gallery.php">Car Gallery</a></li>
+				<li><a href="login.php">Login</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
